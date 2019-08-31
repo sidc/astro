@@ -2,7 +2,7 @@
 
   ArunVash.c	A program to find the difference between Arundhati(Alcor) and Vasistha(Mizar) measured in Right Ascension coordinates.
 
-  Input: Two years
+  Input: Time interval for which you want to calculate the difference. 
   Output: RA values (degrees) for Alcor and Mizar and their difference. 
   RA-Alcor - RA-Mizar. Negative values imply that Arundhati rose earlier than Vasistha. 
 		

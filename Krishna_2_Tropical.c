@@ -1,7 +1,8 @@
 /* 
 
-  Krishna_2_Tropical.c	A program to find Krishna's birthdate according to chart 2 given by Sanatana Goswami in their commentary on Bhagavata Purana (10.3.1) in the book Vaisnava Tosani. This program used Tropical astrology with topocentric corrections. 
+  Krishna_2_Tropical.c	A program to find Krishna's birthdate according to Chart 2 given by Sanatana Goswami in their commentary on Bhagavata Purana (10.3.1) in the book Vaisnava Tosani. This program used Tropical astrology with topocentric corrections. 
 
+Output: Possible birthdates and planetary positions at that time.    
 
   Author: Sidharth Chhabra
 

@@ -2,7 +2,8 @@
 
   Mbh.c	A program to find pair of lunar and solar eclipses with few other planetary positions as mentioned in the Mahabharata 
 
-		
+	Output: Pair of lunar and solar eclipses with their types.    
+	
    
   Author: Sidharth Chhabra
 

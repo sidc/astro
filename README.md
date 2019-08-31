@@ -1,6 +1,6 @@
 # Dating the Kurukshetra War
 
-This code can be used to replicate the findings of  [Chhabra(2019)](mailto:sidc@umich.edu) regarding the **date for the Kurukshetra war**. 
+This code can be used to replicate the findings of Chhabra(2019) regarding the **date for the Kurukshetra war and Krishna's birthdate**. Please write to sidc AT umich.edu to recieve a copy of the paper. 
 
 ## Krishna's Birthdate
 

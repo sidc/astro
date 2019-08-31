@@ -1,8 +1,8 @@
 /* 
 
-  Krishna_1_Tropical.c	A program to find Krishna's birthday according to chart 1 given in the commentary on Bhagavata Purana (10.3.1) by Srila Sanatana Goswami. This programs uses tropical astrology. 
+  Krishna_1_Tropical.c	A program to find Krishna's birthdate according to Chart 1 given in the commentary on Bhagavata Purana (10.3.1) by Srila Sanatana Goswami. This programs uses tropical astrology. 
 
-  Output: Date and planetary positions for the birthday
+  Output: Date and planetary positions for the birthdate
 		
    
   Author: Sidharth Chhabra
