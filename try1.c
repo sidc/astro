@@ -1,69 +1,52 @@
-#include "swephexp.h"
-#include "swephlib.h"
-#include "sweph.h"
-#include "swepcalc.h"
-#include "sweodef.h"
-#include "swemptab.h"
-#include "swejpl.h"
-#include "swedll.h"
+/* 
 
+  try1.c	A program to print planet's coordinates
+
+  Input: 
+  Output:
+		
+   
+  Author: Sidharth Chhabra
+
+*/
+
+#include "swephexp.h" 	/* this includes  "sweodef.h" */
 
 int main()
 {
-double tret[10], attr[20], geopos[10];
+char serr[255],snam[255];
 
-char serr[255];
+int gregflag = SE_JUL_CAL, pyear= -7650 ,pmonth= 9, pday= 17;
 
-int32 whicheph = 0; /* default ephemeris */
+double tjd,p, phour=5.0, geopos[] = {76.87,29.96}, x2[6];
 
-double tjd_start = 2451545; /* Julian day number for 1 Jan 2000 */
+int32 iflgret, iflag =  SEFLG_SWIEPH |  SEFLG_TOPOCTR | SEFLG_SIDEREAL |  SEFLG_NONUT ;
 
-int32 ifltype = SE_ECL_TOTAL|SE_ECL_CENTRAL|SE_ECL_NONCENTRAL;
+swe_set_topo(geopos[0], geopos[1], 0); 
 
-/* find next eclipse anywhere on earth */
+swe_set_sid_mode(1, 0, 0);
 
-int eclflag = swe_sol_eclipse_when_glob(tjd_start, whicheph,  ifltype, tret, 0, serr);
+tjd = swe_julday(pyear,pmonth,pday,phour,gregflag);
+printf("Date: %d/%d/%d\t%f\n ",pyear,pmonth,pday,phour);
+for (p = SE_SUN; p < SE_CHIRON; p++) {
+      if (p == SE_EARTH) continue;
+		  // do the coordinate calculation for this planet p
+	
+      iflgret = swe_calc_ut(tjd, p, iflag, x2, serr);
+	      // if there is a problem, a negative value is returned and an error message is in serr.
+	
+      if (iflgret < 0) 
+    	  printf("error: %s\n", serr);
+      else if (iflgret != iflag)
+      	printf("warning: iflgret != iflag. %s\n", serr);
+	      // get the name of the planet p
+	
+      swe_get_planet_name(p, snam);
+	      // print the coordinates
+	
+      printf("%10s\t%11.7f\t%10.7f\t%10.7f\n", snam, x2[0], x2[1], x2[3]);
 
-if (eclflag == ERR)
+}
 
-  return ERR;
-
-/* the time of the greatest eclipse has been returned in tret[0];
-
- * now we can find geographical position of the eclipse maximum */
-
-tjd_start = tret[0];
-
-eclflag = swe_sol_eclipse_where(tjd_start, whicheph, geopos, attr, serr);
-
-if (eclflag == ERR)
-
-  return ERR;
-
-/* the geographical position of the eclipse maximum is in geopos[0] and geopos[1];
-
- * now we can calculate the four contacts for this place. The start time is chosen
-
- * a day before the maximum eclipse: */
-
-tjd_start = tret[0] - 1;
-
-eclflag = swe_sol_eclipse_when_loc(tjd_start, whicheph, geopos, tret, attr, 0, serr);
-
-if (eclflag == ERR)
-
-  return ERR;
-
-/* now tret[] contains the following values:
-
- * tret[0] = time of greatest eclipse (Julian day number)
-
- * tret[1] = first contact
-
- * tret[2] = second contact
-
- * tret[3] = third contact
-
- * tret[4] = fourth contact */
-
+return OK;
 }

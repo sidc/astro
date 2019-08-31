@@ -1,6 +1,6 @@
 /* 
 
-  AlcorVasistha.c	A program to find the difference between Arundhati(Alcor) and Vasistha(Mizar) measured in Right Ascension coordinates.
+  ArunVash.c	A program to find the difference between Arundhati(Alcor) and Vasistha(Mizar) measured in Right Ascension coordinates.
 
   Input: Two years
   Output: RA values (degrees) for Alcor and Mizar and their difference. 
@@ -30,8 +30,8 @@ int main()
   tjsd = swe_julday(jStartYear,1,1,jut,SE_GREG_CAL);
   tjed = swe_julday(jEndYear,1,1,jut,SE_GREG_CAL);
 
-  printf("Year\tAlcor RA\tMizar RA\tDifference (arc secs)\t%d\n",iflag);
-  for(p = tjsd; p<=tjed; p=p+73050){
+  printf("Year\tAlcor RA\tMizar RA\tDifference (arc secs)\n");
+  for(p = tjsd; p<=tjed; p=p+36525){
     
     // Printing Gregorian year based on Julian dates    
     swe_revjul(p,SE_GREG_CAL,&pyear,&pmonth,&pday,&phour);

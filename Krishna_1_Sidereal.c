@@ -1,9 +1,8 @@
 /* 
 
-  Krishna_GS.c	A program to find Krishna's birthday according to the description given in the Garga Samhita. 
+  Krishna_1_Sidereal.c	A program to find Krishna's birthday according to chart 1 given in the commentary on Bhagavata Purana (10.3.1) by Srila Sanatana Goswami. This programs uses sidereal astrology. 
 
-  Input: 
-  Output:
+  Output: Date and planetary positions for the birthday
 		
    
   Author: Sidharth Chhabra
@@ -15,6 +14,9 @@
 int main()
 {
   char serr[AS_MAXCH], snam[AS_MAXCH];  
+
+// jstartyear : starting point of the search interval
+// jendyear : ending point of the search interval
   int jstartyear = -10500, jendyear = -1500,pyear= 1,pmonth= 1, pday= 1, ayan; 
   double geopos[] = {77.67,27.49}, jut = 0.0, phour=1.0;
   double tjsd,tjed,tjd,moonL, sunL, tithi, x2[6], p;

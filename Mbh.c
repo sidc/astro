@@ -1,9 +1,7 @@
 /* 
 
-  MB1.c	A program to find Mahabharata's date
+  Mbh.c	A program to find pair of lunar and solar eclipses with few other planetary positions as mentioned in the Mahabharata 
 
-  Input: 
-  Output:
 		
    
   Author: Sidharth Chhabra
@@ -14,48 +12,27 @@
 
 int main()
 {
-double tret[10], phour=0.0;
+double tret[10], phour=0.1;
 
 char serr[255],snam[255];
 
-int jstartyear = -7796, jendyear = -7546,  gregflag = SE_JUL_CAL, pyear= 1,pmonth= 1, pday= 1;
+int jstartyear, jendyear,  gregflag = SE_JUL_CAL, pyear= 1,pmonth= 1, pday= 1;
 
 int32 whicheph = SEFLG_SWIEPH; /* default ephemeris */
 
 double tjd_start,p; /* Julian day number for 1 Jan 2000 */
 
-int32 ifltype = 0, eclflag; //SE_ECL_TOTAL ¦ SE_ECL_CENTRAL ¦ SE_ECL_NONCENTRAL;
+int32 ifltype, eclflag; 
+
+jstartyear = -7796; // -9564; //-7796
+jendyear = -7546; //-9314; //-7546
 
 pyear = jstartyear;
 
-/*
-printf("Solar Eclipses \n");
 
-while (pyear <= jendyear ) {
-  tjd_start = swe_julday(pyear,pmonth,pday+2,phour,gregflag);
-
-  // find next eclipse anywhere on earth 
-
-  eclflag = swe_sol_eclipse_when_glob(tjd_start, whicheph,  ifltype, tret, 0, serr);
-
-  if (eclflag == ERR)
-    return ERR;
-
-  // the time of the greatest eclipse has been returned in tret[0]; 
-
-  swe_revjul(tret[0],gregflag,&pyear,&pmonth,&pday,&phour);
-  printf("%d\t%d\t%d\t%f\t%d\n",pyear,pmonth,pday,phour,eclflag);
-  
-}
-
-*/
 printf("Lunar Eclipses \n");
 
-pyear = jstartyear;
-pmonth=1;
-pday=1;
-phour=0.0;
-ifltype = 0; //SE_ECL_TOTAL | SE_ECL_PARTIAL | SE_ECL_PENUMBRAL; 
+
 
 int32 iflgret, moonFlag, sunFlag, iflag =  SEFLG_SWIEPH |  SEFLG_TOPOCTR | SEFLG_SIDEREAL |  SEFLG_NONUT ;
 int32 isflag = iflag | SEFLG_SPEED;
@@ -64,6 +41,7 @@ swe_set_topo(geopos[0], geopos[1], 0);
 swe_set_sid_mode(1, 0, 0);
 
 while (pyear <= jendyear ) {
+  ifltype = SE_ECL_TOTAL | SE_ECL_PARTIAL; //SE_ECL_TOTAL | SE_ECL_PARTIAL | SE_ECL_PENUMBRAL; 
   tjd_start = swe_julday(pyear,pmonth,pday+2,phour,gregflag);
 
   /* find next Lunar eclipse anywhere on earth */
@@ -98,26 +76,28 @@ while (pyear <= jendyear ) {
 
     //printf("Saturn:\t%f\t%f\n",x2[0],x2[1]);
     //If Saturn in Rohini Nakshatra 40 - 53.3 with 2 degrees of error
-    //If Saturn is in or near Vishaka Nakshatra 200 - 213.3 with 10 degrees of error
+    //If Saturn is in or near Vishaka Nakshatra 200 - 213.3 with 20 degrees of error
     if((x2[0] < 180) | (x2[0] > 233.3)) continue;
 
 
-  moonEcl = tret[0];
-  moonFlag=eclflag;
-  eclflag = swe_sol_eclipse_when_glob(moonEcl, whicheph,  ifltype, tret, 0, serr);
+    moonEcl = tret[0];
+    moonFlag=eclflag;
+    ifltype = 0; //SE_ECL_TOTAL ¦ SE_ECL_CENTRAL ¦ SE_ECL_NONCENTRAL;
+    eclflag = swe_sol_eclipse_when_glob(moonEcl, whicheph,  ifltype, tret, 0, serr);
 
-  if (eclflag == ERR)
-    return ERR;
-  sunEcl = tret[0];
+    if (eclflag == ERR)
+      return ERR;
+    sunEcl = tret[0];
 
-  if((sunEcl - moonEcl) > 20) continue;
+    if((sunEcl - moonEcl) > 20) continue;
   
-  swe_revjul(moonEcl,gregflag,&pyear,&pmonth,&pday,&phour);
-  printf("Lunar: %d\t%d\t%d\t%f\t%d\n",pyear,pmonth,pday,phour,moonFlag);
+    swe_revjul(moonEcl,gregflag,&pyear,&pmonth,&pday,&phour);
+    printf("Lunar: %d/%d/%d\t%f\t%d ",pyear,pmonth,pday,phour,moonFlag);
 
-  swe_revjul(sunEcl,gregflag,&pyear,&pmonth,&pday,&phour);
-  printf("Solar: %d\t%d\t%d\t%f\t%d\n",pyear,pmonth,pday,phour,eclflag);
+    swe_revjul(sunEcl,gregflag,&pyear,&pmonth,&pday,&phour);
+    printf("Solar: %d/%d/%d\t%f\t%d\n",pyear,pmonth,pday,phour,eclflag);
   
+  /*
    for (p = SE_SUN; p < SE_CHIRON; p++) {
       if (p == SE_EARTH) continue;
 		  // do the coordinate calculation for this planet p
@@ -136,7 +116,7 @@ while (pyear <= jendyear ) {
 	
       printf("%10s\t%11.7f\t%10.7f\t%10.7f\n", snam, x2[0], x2[1], x2[3]);
     }
-
+  */
 }
 
 

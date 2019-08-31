@@ -1,6 +1,6 @@
 /* 
 
-  Krishna_Tropical.c	A program to find Krishna's birthday according to the description given by the Gosvami's in their commentary on Bhagavata Purana (10.3.1) in the book Vaisnava Tosani. This program used Tropical astrology with topocentric corrections. 
+  Krishna_2_Tropical.c	A program to find Krishna's birthdate according to chart 2 given by Sanatana Goswami in their commentary on Bhagavata Purana (10.3.1) in the book Vaisnava Tosani. This program used Tropical astrology with topocentric corrections. 
 
 
   Author: Sidharth Chhabra
@@ -13,7 +13,7 @@ int main()
 {
   char serr[AS_MAXCH], snam[AS_MAXCH];  
   int jstartyear = -10500, jendyear = -500,pyear= 1,pmonth= 1, pday= 1; 
-  double geopos[] = {82.2,26.8}, jut = 0.0, phour=1.0;
+  double geopos[] = {77.67,27.49}, jut = 0.0, phour=1.0;
   double tjsd,tjed,tjd,moonL, sunL, tithi, x2[6], p;
   int32 iflag, iflgret;
 

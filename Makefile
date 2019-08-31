@@ -32,39 +32,30 @@ swetest: swetest.o libswe.a
 swemini: swemini.o libswe.a
 	$(CC) $(OP) -o swemini swemini.o -L. -lswe -lm -ldl
 
-AlcorMizar: AlcorMizar.o libswe.a
-	$(CC) $(OP) -o AlcorMizar AlcorMizar.o -L. -lswe -lm -ldl
-
-AlcorVasistha: AlcorVasistha.o libswe.a
-	$(CC) $(OP) -o AlcorVasistha AlcorVasistha.o -L. -lswe -lm -ldl
-
-Krishna_GS: Krishna_GS.o libswe.a
-	$(CC) $(OP) -o Krishna_GS Krishna_GS.o -L. -lswe -lm -ldl
+ArunVash: ArunVash.o libswe.a
+	$(CC) $(OP) -o ArunVash ArunVash.o -L. -lswe -lm -ldl
 
 Krishna_Sidereal: Krishna_Sidereal.o libswe.a
 	$(CC) $(OP) -o Krishna_Sidereal Krishna_Sidereal.o -L. -lswe -lm -ldl
 
-mb1: mb1.o libswe.a
-	$(CC) $(OP) -o mb1 mb1.o -L. -lswe -lm -ldl
+Mbh: Mbh.o libswe.a
+	$(CC) $(OP) -o Mbh Mbh.o -L. -lswe -lm -ldl
 
-mb2: mb2.o libswe.a
-	$(CC) $(OP) -o mb2 mb2.o -L. -lswe -lm -ldl
+Krishna_1_Sidereal: Krishna_1_Sidereal.o libswe.a
+	$(CC) $(OP) -o Krishna_1_Sidereal Krishna_1_Sidereal.o -L. -lswe -lm -ldl
 
-eclipse: eclipse.o libswe.a
-	$(CC) $(OP) -o eclipse eclipse.o -L. -lswe -lm -ldl
+Krishna_1_Tropical: Krishna_1_Tropical.o libswe.a
+	$(CC) $(OP) -o Krishna_1_Tropical Krishna_1_Tropical.o -L. -lswe -lm -ldl
 
-Krishna_Kham: Krishna_Kham.o libswe.a
-	$(CC) $(OP) -o Krishna_Kham Krishna_Kham.o -L. -lswe -lm -ldl
-
-Krishna_Tropical: Krishna_Tropical.o libswe.a
-	$(CC) $(OP) -o Krishna_Tropical Krishna_Tropical.o -L. -lswe -lm -ldl
+Krishna_2_Tropical: Krishna_2_Tropical.o libswe.a
+	$(CC) $(OP) -o Krishna_2_Tropical Krishna_2_Tropical.o -L. -lswe -lm -ldl
 
 moonRA: moonRA.o libswe.a
 	$(CC) $(OP) -o moonRA moonRA.o -L. -lswe -lm -ldl
 
 
 try1: try1.o libswe.a
-	$(CC) $(OP) -o try1 try1.o -L. -lswe -lm
+	$(CC) $(OP) -o try1 try1.o -L. -lswe -lm -ldl
 
 # create an archive and a dynamic link libary fro SwissEph
 # a user of this library will inlcude swephexp.h  and link with -lswe
