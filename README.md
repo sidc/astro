@@ -1,6 +1,6 @@
-# astro
+# Dating the Kurukshetra War
 
-This code can be used to replicate the findings of Chhabra(2019) regarding the **date for the Kurukshetra war**. 
+This code can be used to replicate the findings of  [Chhabra(2019)](mailto:sidc@umich.edu) regarding the **date for the Kurukshetra war**. 
 
 ## Krishna's Birthdate
 
